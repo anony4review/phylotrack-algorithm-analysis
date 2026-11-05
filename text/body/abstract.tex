@@ -1,18 +1,31 @@
 \begin{abstract}
 
+Agent-based models of eco-evolutionary processes are a powerful tool for computational biology.
+Among other things, they are a powerful tool for producing ground truth data for testing phylogeny reconstruction techniques.
+Because they directly instantiate the conditions that lead to evolution, they allow testing the impact of scenarios that would be impossible with backwards-time models.
+The ability of these models to produce ground truth data comes from the fact that they enable perfect tracking of the actual realized phylogeny of the digital population.
+However, tracking these phylogenies can impose a substantial time and memory cost on the program, limiting the conditions in which doing so is practical.
+To ameliorate this problem, we describe a phylogeny tracking algorithm that improves on the current state of the art by counting references rather than performing the equivalent of garbage collection.
+Whereas the current state of the art algorithm exhibits a tuneable trade-off between time and memory use, our algorithm enables efficiency in both simultaneously. 
+Here, we present a formal analysis of this algorithm, including its time and space complexity.
+Additionally, we provide a library in C++ and Python that implements our algorithm and present benchmarking results showing that it outperforms the current state of the art.
+
+% In silico agent-based model systems for studying evolution instantiate the processes of heredity, variation, and differential reproductive success (\textit{i.e.} the three ingredients for evolution by natural selection) in digital populations. Consequently, these populations undergo evolution, and can be used as virtual model systems for studying evolutionary dynamics. This experimental paradigm -- used across biological modeling, artificial life, and evolutionary computation -- complements research done using in vitro and in vivo systems by enabling experiments that would be impossible in the lab or field. One key benefit is complete, exact observability. For example, it is possible to perfectly record all parent-child relationships across simulation history, yielding complete phylogenies (ancestry trees). This information reveals when traits were gained or lost, and also facilitates inference of underlying evolutionary dynamics.
+% The Phylotrack project provides libraries for tracking and analyzing phylogenies in in silico evolution. The project is composed of 1) Phylotracklib: a header-only C++ library, developed under the umbrella of the Empirical project, and 2) Phylotrackpy: a Python wrapper around Phylotracklib, created with Pybind11. Both components supply a public-facing API to attach phylogenetic tracking to digital evolution systems, as well as a stand-alone interface for measuring a variety of popular phylogenetic topology metrics. Underlying design and C++ implementation prioritizes efficiency, allowing for fast generational turnover for agent populations numbering in the tens of thousands. Several explicit features (e.g., phylogeny pruning and abstraction, etc.) are provided for reducing the memory footprint of phylogenetic information. 
+
 % TODO we should probably use the word near optimal somewhere
 
 % Reconstruction of phylogenetic history from natural biosequences kindles an evergreen profusion of statistical and algorithmic innovation because it is interesting and useful but especially because it is hard.
 % Reconstruction of phylogenetic history from biological sequences raises a vast array of statistical and algorithmic challenges, because it is both important and difficult.
 % Efforts to reconstruct phylogenetic history from biological sequences have proven a rich and enduring well for statistical and algorithmic innovation.
-Since the advent of modern bioinformatics, the challenging, multifaceted problem of reconstructing phylogenetic history from biological sequences has hatched perennial statistical and algorithmic innovation.
-Studies of the phylogenetic dynamics of digital, agent-based evolutionary models motivate a peculiar converse question: how to best engineer tracking to facilitate fast, accurate, and memory-efficient lineage reconstructions?
-Here, we formally describe procedures for phylogenetic analysis in both serial and distributed computing scenarios.
-With respect to the former, we demonstrate reference-counting-based pruning of extinct lineages.
-For the latter, we introduce a trie-based phylogenetic reconstruction approach for ``hereditary stratigraphy'' genome annotations.
-This process allows phylogenetic relationships between genomes to be inferred by comparing their similarities, akin to reconstruction of natural history from biological DNA sequences.
-Phylogenetic analysis capabilities significantly advance distributed agent-based simulations as a tool for evolutionary research, and also benefit application-oriented evolutionary computing.
-Such tracing could extend also to other digital artifacts that proliferate through replication, like digital media and computer viruses.
+% Since the advent of modern bioinformatics, the challenging, multifaceted problem of reconstructing phylogenetic history from biological sequences has hatched perennial statistical and algorithmic innovation.
+% Studies of the phylogenetic dynamics of digital, agent-based evolutionary models motivate a peculiar converse question: how to best engineer tracking to facilitate fast, accurate, and memory-efficient lineage reconstructions?
+% Here, we formally describe procedures for phylogenetic analysis in both serial and distributed computing scenarios.
+% With respect to the former, we demonstrate reference-counting-based pruning of extinct lineages.
+% For the latter, we introduce a trie-based phylogenetic reconstruction approach for ``hereditary stratigraphy'' genome annotations.
+% This process allows phylogenetic relationships between genomes to be inferred by comparing their similarities, akin to reconstruction of natural history from biological DNA sequences.
+% Phylogenetic analysis capabilities significantly advance distributed agent-based simulations as a tool for evolutionary research, and also benefit application-oriented evolutionary computing.
+% Such tracing could extend also to other digital artifacts that proliferate through replication, like digital media and computer viruses.
 
 
 % This issue directly implicates the design of virtual annotations on digital genomes to facilitate post-hoc inference — and analysis — of their lineages.

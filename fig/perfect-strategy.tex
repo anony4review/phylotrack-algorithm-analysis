@@ -13,8 +13,11 @@
   \label{fig:perfect-strategy:reference-counting}
 \end{minipage}
 \caption{%
-\textbf{TODO.}
-TODO.
+\textbf{Existing state of the art versus proposed reference counting strategy.}
+Under the existing garbage collection approach (panel \ref{fig:perfect-strategy:garbage-collection}), all ancestry information for all members of the current and previous populations is retained over a lookback window.
+Extinct lineages are pruned during discrete garbage collection events.
+Therefore, memory pressure increases substantially between garbage collection events.
+By contrast, under the proposed reference counting strategy (panel \ref{fig:perfect-strategy:reference}), extinct lineages are pruned instantaneously, preventing accumulation of memory pressure between cleanup windows.
 }
 \label{fig:perfect-strategy}
 \end{figure}
